@@ -25,6 +25,8 @@ export class AppComponent {
         this.grid[this.bird.height][this.bird.position] = "yellow";
 
         this.timerId = setInterval(() => {
+            this.score++;
+
             this.bird.height++;
             let towers = this.towers.slice();
             
@@ -61,7 +63,10 @@ export class AppComponent {
     @HostListener("click")
     public handleClick = (event$) => this.bird.height -= 3;
 
-    public restart = () => this.crashed = false;
+    public restart = () => {
+        this.crashed = false;
+        this.score = 0;
+    };
 
     public grid: Array<any> = [];
 
@@ -72,4 +77,6 @@ export class AppComponent {
     public towers: Array<Tower> = [];
 
     public crashed: boolean = false;
+
+    public score: number = 0;
 }
