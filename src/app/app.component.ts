@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { Bird } from "./models/bird";
 import { Tower } from "./models/tower";
 
@@ -8,7 +8,7 @@ import { Tower } from "./models/tower";
     selector: "app"
 })
 export class AppComponent {
-    constructor(public elementRef: ElementRef) {
+    constructor() {
         this.handleClick = this.handleClick.bind(this);
     }
 
