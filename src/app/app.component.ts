@@ -1,4 +1,4 @@
-import { Component, ElementRef } from "@angular/core";
+import { Component, ElementRef, HostListener } from "@angular/core";
 import { Bird } from "./models/bird";
 import { Tower } from "./models/tower";
 
@@ -25,8 +25,7 @@ export class AppComponent {
         this.towers.push(new Tower(false, 6, 14));
         this.towers.push(new Tower(false, 5, 17));
         this.towers.push(new Tower(true, 8, 21));
-
-
+        
         this.grid[this.bird.height][this.bird.position] = "yellow";
 
         this.timerId = setInterval(() => {
@@ -62,11 +61,8 @@ export class AppComponent {
 
         }, 200);
     }
-
-    ngAfterViewInit() {
-        (<HTMLElement>this.elementRef.nativeElement).addEventListener("click", this.handleClick);
-    }
-
+    
+    @HostListener("click")
     public handleClick(event$) { this.bird.height -= 3; }
 
     public grid: Array<any> = [];

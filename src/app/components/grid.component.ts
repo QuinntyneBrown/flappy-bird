@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Subject } from "rxjs/Subject";
+import { Component, Input } from "@angular/core";
 
 @Component({
     templateUrl: "./grid.component.html",
