@@ -7,16 +7,12 @@ import { Tower } from "./models/tower";
     styleUrls: ["./app.component.css"],
     selector: "app"
 })
-export class AppComponent {
-    constructor() {
-        this.handleClick = this.handleClick.bind(this);
-    }
-
+export class AppComponent {    
     ngOnInit() {        
         for (let i = 0; i < 20; i++) {
             this.grid.push(new Array(30).fill('red'));
         }
-
+        
         this.towers.push(new Tower(false, 5, 3));
         this.towers.push(new Tower(true, 8, 5));
         this.towers.push(new Tower(false, 6, 7));
@@ -63,7 +59,9 @@ export class AppComponent {
     }
     
     @HostListener("click")
-    public handleClick(event$) { this.bird.height -= 3; }
+    public handleClick = (event$) => this.bird.height -= 3;
+
+    public restart = () => this.crashed = false;
 
     public grid: Array<any> = [];
 
@@ -72,4 +70,6 @@ export class AppComponent {
     public timerId: any;
 
     public towers: Array<Tower> = [];
+
+    public crashed: boolean = false;
 }
